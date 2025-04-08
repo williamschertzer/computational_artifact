@@ -1,6 +1,6 @@
 # Computational Artifact: William Schertzer CSE-MSE PhD Qualifying Exam
 
-This repository contains the computational artifact submitted by **William Schertzer** for the PhD CSE-MSE Qualifying Examination. It includes the full workflow for processing, analyzing, and modeling *anion exchange membrane* (AEM) data extracted from the literature, with the aim of accelerating materials discovery using machine learning.
+This repository contains the computational artifact submitted by **William Schertzer** for the PhD CSE-MSE Qualifying Examination. It includes the full workflow for processing, analyzing, and modeling anion exchange membrane (AEM) data extracted from the literature, with the aim of accelerating materials discovery using machine learning.
 
 ## Repository Structure
 
