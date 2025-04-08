@@ -1,0 +1,3 @@
+file_model = model.pkl # Model object file. Required
+file_fingerprint = /data/wschertzer/aem_aging/create_datasets/shared_datasets/st/OH/3_15_25/0/fp_test_0.csv # File containing X. Required
+file_output = predicted_Y.csv # Optional

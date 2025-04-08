@@ -1,0 +1,10 @@
+{
+    "raw_data": "raw_data/aem_aging_3_18_25.csv",
+
+    "props": [
+        "OHCond(mS/cm)"
+    ],
+    "log_time":true,
+
+    "output": "/home/wschertzer3/computational_artifact/create_datasets/shared_datasets/st/OH/all/"
+}

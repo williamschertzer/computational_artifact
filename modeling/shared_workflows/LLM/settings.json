@@ -1,0 +1,17 @@
+{
+    "new_model": "placeholder",
+    "test_preds": true,
+    "train_preds": true,
+    "val_preds": true,
+    "plot_props": [
+        "OHCond(mS/cm)"
+    ],
+    "train_dataset_file": "/home/wschertzer3/aem_aging/modeling/workflows/3_20_25_selfies_hyperparam_opt/train_optuna.csv",
+    "test_dataset_file": "/home/wschertzer3/aem_aging/modeling/workflows/3_20_25_selfies_hyperparam_opt/test_optuna.csv",
+    "val_dataset_file": "/home/wschertzer3/aem_aging/modeling/workflows/3_20_25_selfies_hyperparam_opt/val_optuna.csv",
+    "scaler_file": "/home/wschertzer3/aem_aging/create_datasets/prepare_datasets/property_scalers.pkl",
+    "adapter_path": "/home/wschertzer3/aem_aging/modeling/workflows/3_20_25_selfies_hyperparam_opt/lr_0.0002/epochs_1/r_8/a_16/loradrop_0.06/batch_16/layers_2/dim_[2048, 1024]/regdrop_[0.06, 0.2]/act_ReLU/",
+    "regression_head_config_path": "/home/wschertzer3/aem_aging/modeling/workflows/3_20_25_selfies_hyperparam_opt/lr_0.0002/epochs_1/r_8/a_16/loradrop_0.06/batch_16/layers_2/dim_[2048, 1024]/regdrop_[0.06, 0.2]/act_ReLU/regression_head_config.json",
+    "regression_head_path": "/home/wschertzer3/aem_aging/modeling/workflows/3_20_25_selfies_hyperparam_opt/lr_0.0002/epochs_1/r_8/a_16/loradrop_0.06/batch_16/layers_2/dim_[2048, 1024]/regdrop_[0.06, 0.2]/act_ReLU/regression_head.pth",
+    "unscale": false
+}

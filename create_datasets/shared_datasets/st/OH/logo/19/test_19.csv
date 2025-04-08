@@ -1,0 +1,5 @@
+,Backbone,Cation,Sample,smiles1,smiles2,smiles3,c1,c2,c3,additive_name_1,additive_name_2,additive_smiles1,additive_smiles2,additive_smiles3,additivec1,additivec2,additivec3,solvent,solvent_conc(M),stab_temp,RH(%),lw,Temp(C),EXP_IEC,prop,time(h),value,DOI,theor_IEC,known_A,known_B
+1487,PE,TMA,1,*CC(C)(C[NH+](C)C)*,*CC*,*CC*,100.0,0.0,0.0,N/A,N/A,*CC*,*CC*,*CC*,0.0,0.0,0.0,KOH,1.0,80.0,100.0,1.0,22.0,,OHCond(mS/cm),2.722633922533812,1.543,https://doi.org/10.1021/acsenergylett.3c00319,9.99,1.643,
+1488,PE,TMA,1,*CC(C)(C[NH+](C)C)*,*CC*,*CC*,100.0,0.0,0.0,N/A,N/A,*CC*,*CC*,*CC*,0.0,0.0,0.0,KOH,1.0,80.0,100.0,1.0,22.0,,OHCond(mS/cm),2.526339277389844,1.567,https://doi.org/10.1021/acsenergylett.3c00319,9.99,1.643,
+1489,PE,TMA,1,*CC(C)(C[NH+](C)C)*,*CC*,*CC*,100.0,0.0,0.0,N/A,N/A,*CC*,*CC*,*CC*,0.0,0.0,0.0,KOH,1.0,80.0,100.0,1.0,22.0,,OHCond(mS/cm),2.225309281725863,1.613,https://doi.org/10.1021/acsenergylett.3c00319,9.99,1.643,
+1490,PE,TMA,1,*CC(C)(C[NH+](C)C)*,*CC*,*CC*,100.0,0.0,0.0,N/A,N/A,*CC*,*CC*,*CC*,0.0,0.0,0.0,KOH,1.0,80.0,100.0,1.0,22.0,,OHCond(mS/cm),0.0,1.643,https://doi.org/10.1021/acsenergylett.3c00319,9.99,1.643,

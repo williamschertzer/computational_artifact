@@ -1,0 +1,23 @@
+{
+    "new_model": "placeholder",
+    "test_preds": false,
+    "train_preds": false,
+    "val_preds": false,
+    "plot_props": [
+        "OHCond(mS/cm)"
+    ],
+    "train_dataset_file": "/home/wschertzer3/aem_aging/create_datasets/shared_datasets/st/OH/3_18_25_noscale/0/fp_train_0.csv",
+    "test_dataset_file": "/home/wschertzer3/aem_aging/create_datasets/shared_datasets/st/OH/3_18_25_noscale/0/fp_test_0.csv",
+    "val_dataset_file": "/home/wschertzer3/aem_aging/create_datasets/shared_datasets/st/OH/3_18_25_noscale/0/fp_val_0.csv",
+    "model_file": "placeholder",    
+    "batch_size": 64,
+    "lr":0.001,
+    "epochs": 500,
+    "l1":0,
+    "l2":0,
+    "d1":0,
+    "d2":0,
+    "weight_decay":0,
+    "activation": "relu"
+
+}

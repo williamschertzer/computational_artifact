@@ -1,0 +1,6 @@
+modeling/llama/results/*
+modeling/llama/_conda_env/*
+modeling/workflows/*
+create_datasets/combine_datasets/data/plots/*
+analyze_data/time_plots/plots/*
+modeling/llama/make.sh

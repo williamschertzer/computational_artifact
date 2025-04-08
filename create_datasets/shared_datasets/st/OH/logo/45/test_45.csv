@@ -1,0 +1,5 @@
+,Backbone,Cation,Sample,smiles1,smiles2,smiles3,c1,c2,c3,additive_name_1,additive_name_2,additive_smiles1,additive_smiles2,additive_smiles3,additivec1,additivec2,additivec3,solvent,solvent_conc(M),stab_temp,RH(%),lw,Temp(C),EXP_IEC,prop,time(h),value,DOI,theor_IEC,known_A,known_B
+1637,PVM,TMA,N/A,C[N+](C)(C)Cc1ccc(C(C*)*)cc1.[OH-],*CC*,*CC*,100.0,0.0,0.0,N/A,N/A,*CC*,*CC*,*CC*,0.0,0.0,0.0,N/A,0.0,25.0,100.0,1.0,80.0,,OHCond(mS/cm),2.681241237375587,1.816,,5.68,1.93,
+1638,PVM,TMA,N/A,C[N+](C)(C)Cc1ccc(C(C*)*)cc1.[OH-],*CC*,*CC*,100.0,0.0,0.0,N/A,N/A,*CC*,*CC*,*CC*,0.0,0.0,0.0,N/A,0.0,25.0,100.0,1.0,80.0,,OHCond(mS/cm),2.380211241711606,1.856,,5.68,1.93,
+1639,PVM,TMA,N/A,C[N+](C)(C)Cc1ccc(C(C*)*)cc1.[OH-],*CC*,*CC*,100.0,0.0,0.0,N/A,N/A,*CC*,*CC*,*CC*,0.0,0.0,0.0,N/A,0.0,25.0,100.0,1.0,80.0,,OHCond(mS/cm),2.0791812460476247,1.898,,5.68,1.93,
+1640,PVM,TMA,N/A,C[N+](C)(C)Cc1ccc(C(C*)*)cc1.[OH-],*CC*,*CC*,100.0,0.0,0.0,N/A,N/A,*CC*,*CC*,*CC*,0.0,0.0,0.0,N/A,0.0,25.0,100.0,1.0,80.0,,OHCond(mS/cm),0.0,1.93,,5.68,1.93,

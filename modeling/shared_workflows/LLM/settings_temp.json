@@ -1,0 +1,5 @@
+{
+    "train_dataset_file": "/home/wschertzer3/aem_aging/create_datasets/shared_datasets/st/OH/3_18_25_noscale/0/train_0.csv",
+    "test_dataset_file": "/home/wschertzer3/aem_aging/create_datasets/shared_datasets/st/OH/3_18_25_noscale/0/test_0.csv",
+    "val_dataset_file": "/home/wschertzer3/aem_aging/create_datasets/shared_datasets/st/OH/3_18_25_noscale/0/val_0.csv"
+}
