@@ -172,9 +172,8 @@ def fingerprint_pg(train_df, val_df, test_df,fp_scaler_path, prop_scaler_path):
         - RH(%)     : fill with 100 if missing.
         - Temp (C)  : fill with 20 if missing.
         - Theor IEC : error if missing
-        - One-hot encoded additives from 'additive_name_1' and 'additive_name_2'.
-        - One-hot encoded solvents from 'solvent'.
-        - Numeric solvent concentration (M) from 'solvent_conc(M)'.
+        - additives from 'additive_{}' and 'additive_name_2'.
+        - solvents from 'solvent_{}'.
         - stab_temp : fill with 0 if missing.
         - One-hot encoded prop.
         - time(h)   : from 'time(h)' or 'time'.
@@ -201,38 +200,14 @@ def fingerprint_pg(train_df, val_df, test_df,fp_scaler_path, prop_scaler_path):
             print('NO THEOR IEC')
             quit()
             
-        # One-hot encoding for additives (combine additive_name_1 and additive_name_2)
-        if 'additive_name_1' in df.columns:
-            dummies1 = pd.get_dummies(df['additive_name_1'], prefix='additive')
-        else:
-            print('NO ADDITIVE 1')
-            quit()
-        if 'additive_name_2' in df.columns:
-            dummies2 = pd.get_dummies(df['additive_name_2'], prefix='additive')
-        else:
-            print('NO ADDITIVE 2')
-            quit()
-        additive_dummies = dummies1.add(dummies2, fill_value=0) if (not dummies1.empty or not dummies2.empty) else pd.DataFrame(index=df.index)
-        if not additive_dummies.empty:
-            additive_dummies = (additive_dummies > 0).astype(int)
-        
-        # One-hot encoding for solvent:
-        if 'solvent' in df.columns:
-            solvent_dummies = pd.get_dummies(df['solvent'], prefix='solvent')
+        # Use additive_{name} and solvent_{name} columns directly
+        additive_cols = [col for col in df.columns if col.startswith('additive_')]
+        solvent_cols = [col for col in df.columns if col.startswith('solvent_')]
 
-            # Ensure binary structure (0 or 1) for solvent
-            solvent_dummies = (solvent_dummies > 0).astype(int)
-        else:
-            print('NO SOLEVENT')
-            quit()
-            
-        # Numeric solvent concentration (M)
-        if 'solvent_conc(M)' in df.columns:
-            solvent_conc = df['solvent_conc(M)'].fillna(0)
-        else:
-            print('NO SOLVENT_CONC')
-            quit()
-            
+        additive_data = df[additive_cols] if additive_cols else pd.DataFrame(index=df.index)
+        solvent_data = df[solvent_cols] if solvent_cols else pd.DataFrame(index=df.index)
+
+    
         # stab_temp:
         if 'stab_temp' in df.columns:
             stab_temp = df['stab_temp'].fillna(25)
@@ -255,18 +230,18 @@ def fingerprint_pg(train_df, val_df, test_df,fp_scaler_path, prop_scaler_path):
         else:
             print("NO TIME")
             quit()
-        # known_A
-        if 'known_A' in df.columns:
-            known_A = df['known_A']
-        else:
-            print("NO KNOWN_A")
-            quit()
-        # known_B
-        if 'known_B' in df.columns:
-            known_B = df['known_B']
-        else:
-            print("NO KNOWN B")
-            quit()
+        # # known_A
+        # if 'known_A' in df.columns:
+        #     known_A = df['known_A']
+        # else:
+        #     print("NO KNOWN_A")
+        #     quit()
+        # # known_B
+        # if 'known_B' in df.columns:
+        #     known_B = df['known_B']
+        # else:
+        #     print("NO KNOWN B")
+        #     quit()
         
         
 
@@ -275,8 +250,8 @@ def fingerprint_pg(train_df, val_df, test_df,fp_scaler_path, prop_scaler_path):
 
 
         # Combine all additional features.
-        additional_features = pd.concat([rh, temp, theor_IEC, additive_dummies, solvent_dummies, solvent_conc, 
-                                        stab_temp, prop_dummies, time_h, known_A, known_B], axis=1)
+        additional_features = pd.concat([rh, temp, theor_IEC, additive_data, solvent_data, 
+                                        stab_temp, prop_dummies, time_h], axis=1)
         # join with the fingerprint DataFrame.
         combined_df = fp_df.join(additional_features)
 
@@ -312,7 +287,8 @@ def fingerprint_pg(train_df, val_df, test_df,fp_scaler_path, prop_scaler_path):
         # Save the training feature columns for later use.
         training_feature_columns = train_fp_df.columns
 
-        columns_to_scale = ['RH(%)', 'Temp(C)', 'theor_IEC', 'solvent_conc(M)', 'stab_temp', 'time(h)']  # Specify fingerprint columns
+        columns_to_scale = ['RH(%)', 'Temp(C)', 'theor_IEC', 'stab_temp', 'time(h)']
+        columns_to_scale += [col for col in train_fp_df.columns if col.startswith('additive_') or col.startswith('solvent_')]
         scaler, scaled_train_df = scale_fingerprints(train_fp_df, 'fp_scaler.pkl', fit=True, columns_to_scale=columns_to_scale)
 
         

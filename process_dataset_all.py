@@ -1,19 +1,8 @@
 import pandas as pd
-import numpy as np
-from rdkit import Chem
-from rdkit.Chem import Descriptors
-from sklearn.preprocessing import MinMaxScaler
-import pickle
 import json
 from create_datasets.fix_raw_data.fix_raw_data import fix_raw
-from create_datasets.prepare_datasets.prepare_data import prepare_dataset
-from create_datasets.create_splits.create_splits_random_val import split_random_val
-from create_datasets.create_splits.create_splits import split
-from create_datasets.create_splits.random_splits import random_split
-from create_datasets.create_splits.create_splits_logo import logo_split
 from create_datasets.create_splits.create_splits_normalized import normalized_split
 from create_datasets.fingerprinting.fingerprint_pg import fingerprint_pg
-import os
 
 # settings
 # Path to the JSON file
@@ -23,18 +12,20 @@ json_file_path = "process_dataset.json"
 with open(json_file_path, 'r') as json_file:
     data = json.load(json_file)
 
-# read in raw data, fix raw data
+# read in raw data, fix raw datacalculate and add theoretical IEC, shift time data to start at max
 df  = pd.read_csv(data['raw_data'])
 props = data['props']
-df = fix_raw(df, props)
-
-# calculate and add theoretical IEC, shift time data to start at max
 log_time = data['log_time'] # whether or not to log scale time
-df = prepare_dataset(df, log=log_time)
+df = fix_raw(df, props, log_time)
 df = df.reset_index(drop=True)
 
-# create splits
+# output location from json file
 output = data['output']
+
+# save informatics-ready dataset
+df.to_csv(output + f'/dataset.csv')
+
+# create splits
 test_output = output + 'test.csv'
 splits = normalized_split(df)
 

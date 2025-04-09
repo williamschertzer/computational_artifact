@@ -4,7 +4,7 @@
     "props": [
         "OHCond(mS/cm)"
     ],
-    "log_time":true,
+    "log_time":false,
 
     "output": "/home/wschertzer3/computational_artifact/create_datasets/shared_datasets/st/OH/all/"
 }

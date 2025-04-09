@@ -39,3 +39,4 @@ Contains modeling workflows and environment setup tools:
 - `fingerprint_cache.pkl`: Cached molecular fingerprints to avoid redundant computation across SMILES strings.
 - `FP_scaler.pkl`: Scaler object used to normalize fingerprint vectors.
 - `ranked_filtered_candidates.csv`: A ranked list of fluorine-free AEM candidates predicted to meet all target property requirements based on ML models.
+`OH_dataset.csv`: Example non-fingerprinted dataset for hydroxide conductivity (OH conductivity) after preprocessing, ready for machine learning.
