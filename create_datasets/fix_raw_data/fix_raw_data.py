@@ -3,15 +3,15 @@ import numpy as np
 from rdkit import Chem
 from rdkit.Chem import Descriptors
 from sklearn.preprocessing import MinMaxScaler
-import pickle
+import re
 
 
 def fix_raw(df, props, log_time):
 
     def calculate_iec(smile, c):
-        if pd.isna(smile) or pd.isna(c):
+        if pd.isna(smile) or pd.isna(c) or not isinstance(smile, str):
             return 0, 0
-        mol = Chem.MolFromSmiles(smile.split(".")[0])
+        mol = Chem.MolFromSmiles(smile)
         mw = Descriptors.ExactMolWt(mol)
         num_ions = sum(1 for atom in mol.GetAtoms() if atom.GetFormalCharge() > 0)
         return num_ions * c, mw * c
@@ -97,16 +97,16 @@ def fix_raw(df, props, log_time):
             if s != '*CC*'
         ]
 
-        additive_contributions = {a: 0.0 for a in unique_additives}
+        additive_contributions = {f"additive_{a}": 0.0 for a in unique_additives}
 
         if len(real_names) == 1:
             # One additive present → sum all additive concentrations
-            additive_contributions[real_names[0]] = row['additivec1'] + row['additivec2'] + row['additivec3']
+            additive_contributions[f"additive_{real_names[0]}"] = row['additivec1'] + row['additivec2'] + row['additivec3']
 
         elif len(real_names) == 2 and len(real_smiles) == 2:
             # Two names, two valid SMILES → use c1 and c2
-            additive_contributions[real_names[0]] = row['additivec1']
-            additive_contributions[real_names[1]] = row['additivec2']
+            additive_contributions[f"additive_{real_names[0]}"] = row['additivec1']
+            additive_contributions[f"additive_{real_names[1]}"] = row['additivec2']
 
         elif len(real_names) == 2 and len(real_smiles) == 3:
             # Ambiguous case → record and skip assignment
@@ -118,6 +118,7 @@ def fix_raw(df, props, log_time):
 
 
     df = df.dropna(how='all')
+
 
     # fill missing values with defaults
     df['Backbone'] = df['Backbone'].fillna('N/A') 
@@ -144,6 +145,17 @@ def fix_raw(df, props, log_time):
     df['lw'] = df['lw'].fillna(1)
     df['Temp(C)'] = df['Temp(C)'].fillna(25)
     df['time(h)'] = df['time(h)'].fillna(0)
+
+
+    # Define columns to clean
+    smiles_cols = [
+        'smiles1', 'smiles2', 'smiles3',
+        'additive_smiles1', 'additive_smiles2', 'additive_smiles3'
+    ]
+
+    # Apply regex to remove all ".x" fragments (dot followed by any alphanumeric or bracketed group)
+    for col in smiles_cols:
+        df[col] = df[col].astype(str).apply(lambda x: re.sub(r"\.\[.*?\]|\.\w+", "", x))
 
     subset_columns = ['smiles1', 'smiles2', 'smiles3', 'c1', 'c2', 'c3', 
                     'additive_smiles1', 'additive_smiles2', 'additive_smiles3', 

@@ -11,7 +11,7 @@ Contains the original AEM datasets, directly extracted and curated from peer-rev
 This directory includes scripts for:
 - **Cleaning raw data**
 - **Generating molecular fingerprints**
-- **Performing train-validation-test splits** (including leave-one-group-out cross-validation)
+- **Performing train-validation-test splits** (including random, polymer, composition, leave-one-time-group-out cross-validation)
 
 To run the full dataset preparation pipeline:
 - Use `process_dataset_all.py` to create a dataset using the entire corpus.
